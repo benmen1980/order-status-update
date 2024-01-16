@@ -31,7 +31,7 @@ function redirect_users_if_not_logged_in() {
         exit;
     }
 }
-add_action('template_redirect', 'redirect_users_if_not_logged_in');
+//add_action('template_redirect', 'redirect_users_if_not_logged_in');
 
 
 // Enqueue CSS and JS files
@@ -138,6 +138,14 @@ function update_order_creative_status() {
 
 // Function to generate the custom form HTML
 function update_creature_status_form_shortcode() {
+    if (!is_user_logged_in()) {
+        // Get the login URL
+        $login_url = wp_login_url($_SERVER['REQUEST_URI']);
+        
+        // Redirect to the login page
+        wp_redirect($login_url);
+        exit;
+    }
     ob_start(); // Start output buffering
 
     // Form HTML - Customize this according to your requirements
