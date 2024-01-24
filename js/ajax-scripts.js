@@ -2,7 +2,7 @@ var $=jQuery.noConflict();
 
 jQuery(document).ready(function($){
 
-
+    $("#order_num_to_update").focus();
 
     function update_creative_status(){
         console.log('enter update status');
